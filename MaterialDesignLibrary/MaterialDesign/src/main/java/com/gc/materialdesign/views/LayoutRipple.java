@@ -19,7 +19,7 @@ public class LayoutRipple extends CustomView {
 	OnClickListener onClickListener;
 	int backgroundColor = Color.parseColor("#FFFFFF");
 
-	Integer rippleColor;
+	Integer mmRippleColor;
 	Float xRippleOrigin;
 	Float yRippleOrigin;
 
@@ -47,17 +47,17 @@ public class LayoutRipple extends CustomView {
 		}
 		// Set Ripple Color
 		// Color by resource
-		int rippleColor = attrs.getAttributeResourceValue(MATERIALDESIGNXML,
-				"rippleColor", -1);
-		if (rippleColor != -1) {
-			setRippleColor(getResources().getColor(rippleColor));
+		int mRippleColor = attrs.getAttributeResourceValue(MATERIALDESIGNXML,
+				"mRippleColor", -1);
+		if (mRippleColor != -1) {
+			setmRippleColor(getResources().getColor(mRippleColor));
 		} else {
 			// Color by hexadecimal
-			int background = attrs.getAttributeIntValue(MATERIALDESIGNXML, "rippleColor", -1);
+			int background = attrs.getAttributeIntValue(MATERIALDESIGNXML, "mRippleColor", -1);
 			if (background != -1)
-				setRippleColor(background);
+				setmRippleColor(background);
 			else
-				setRippleColor(makePressColor());
+				setmRippleColor(makePressColor());
 		}
 		
 		rippleSpeed = attrs.getAttributeFloatValue(MATERIALDESIGNXML,
@@ -140,9 +140,9 @@ public class LayoutRipple extends CustomView {
 		canvas.drawARGB(0, 0, 0, 0);
 		Paint paint = new Paint();
 		paint.setAntiAlias(true);
-		if (rippleColor == null)
-			rippleColor = makePressColor();
-		paint.setColor(rippleColor);
+		if (mRippleColor == null)
+			mRippleColor = makePressColor();
+		paint.setColor(mRippleColor);
 		x = (xRippleOrigin == null) ? x : xRippleOrigin;
 		y = (yRippleOrigin == null) ? y : yRippleOrigin;
 		canvas.drawCircle(x, y, radius, paint);
@@ -188,8 +188,8 @@ public class LayoutRipple extends CustomView {
 		onClickListener = l;
 	}
 
-	public void setRippleColor(int rippleColor) {
-		this.rippleColor = rippleColor;
+	public void setmRippleColor(int mRippleColor) {
+		this.mRippleColor = mRippleColor;
 	}
 
 	public void setxRippleOrigin(Float xRippleOrigin) {
